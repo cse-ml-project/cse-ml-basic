@@ -52,3 +52,7 @@ sess = tf.Session()
 print(sess.run(hello))
 ```
 
+4. MNIST 처리
+tf-mnist-softmax.py  
+tf-mnist-cnn.py  
+참조
