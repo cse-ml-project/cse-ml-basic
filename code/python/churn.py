@@ -1,43 +1,49 @@
-import urllib2
-# If you are using Python 3+, import urllib instead of urllib2
+import urllib.request
+import json
 
-import json 
-
-
-data =  {
-
+data = {
         "Inputs": {
-
                 "input1":
-                {
-                    "ColumnNames": ["idx", "나이", "프로모션참여수", "식별자", "일평균게임플레이분", "90일내아이템구매수", "게임레벨범위", "보유크리스탈", "유입경로", "인종", "성별", "가입코드", "구매번호", "주당접속수", "가입국가", "이탈여부"],
-                    "Values": [ [ "0", "0", "0", "0", "0", "0", "0", "0", "value", "value", "value", "0", "0", "0", "value", "value" ], [ "0", "0", "0", "0", "0", "0", "0", "0", "value", "value", "value", "0", "0", "0", "value", "value" ], ]
-                },        },
-            "GlobalParameters": {
-}
+                [
+                    {
+                            'idx': "1",   
+                            'age': "1",   
+                            'promotion_num': "1",   
+                            'identity': "1",   
+                            'game_play_min_per_day': "1",   
+                            'item_purchase_num_in_90_days': "1",   
+                            'game_level': "1",   
+                            'crystal': "1",   
+                            'race': "",   
+                            'gender': "",   
+                            'register_code': "1",   
+                            'purchase_num': "1",   
+                            'game_play_num_per_week': "1",   
+                            'country': "",   
+                            'churn_YN': "",   
+                    }
+                ],
+        },
+    "GlobalParameters":  {
     }
+}
 
 body = str.encode(json.dumps(data))
 
-url = 'https://asiasoutheast.services.azureml.net/workspaces/46d0e60b05b34558827abd41f11d204f/services/5fe50da906bf450d81d07db8aab4c9c5/execute?api-version=2.0&details=true'
-api_key = 'R0PlD/Mo+R2olr+I8qFTbBseKqtQ3oeNas8pcfMhzuQ+thj3sfqN+sWjGeTaZPXiu1+3rluYBv8YVKKKoMtqxw==' # Replace this with the API key for the web service
+url = 'https://asiasoutheast.services.azureml.net/subscriptions/3e6494d9d19d41c6bfa644870aecc57b/services/2b11b85c3fbe4daf8b8e6dc17c558e11/execute?api-version=2.0&format=swagger'
+api_key = '<CHANGE-HERE>' # Replace this with the API key for the web service
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
-req = urllib2.Request(url, body, headers) 
+req = urllib.request.Request(url, body, headers)
 
 try:
-    response = urllib2.urlopen(req)
-
-    # If you are using Python 3+, replace urllib2 with urllib.request in the above code:
-    # req = urllib.request.Request(url, body, headers) 
-    # response = urllib.request.urlopen(req)
+    response = urllib.request.urlopen(req)
 
     result = response.read()
-    print(result) 
-except urllib2.HTTPError, error:
+    print(result)
+except urllib.error.HTTPError as error:
     print("The request failed with status code: " + str(error.code))
 
     # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
     print(error.info())
-
-    print(json.loads(error.read()))                 
+    print(json.loads(error.read().decode("utf8", 'ignore')))
