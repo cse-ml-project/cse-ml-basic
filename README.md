@@ -5,19 +5,13 @@ Azure Machine Learning cse camp
 
 - Github URL : https://github.com/cse-ml-project/cse-ml-basic  
 
-### github organazaion 가입
-- github id 또는 email을 채널에 공유
-- organization 가입 초대 승인
-
 ### ML 기본 세션 진행
+세션 진행
 
-### Iris를 이용한 예측 데모 진행
-
-### Iris 모델 구축 데모
+### Iris 모델 구축 데모 hands-on
 Iris 데모 데이터는 붓꽃 Label 데이터로 일반적인 분석 시나리오의 설명 등에 사용되는 예제 데이터임  
 ![Iris 데이터 구조](./images/iris.png)  
 Iris 데이터 link : data 폴더 참조  
-
 
 ### 모바일 게임 데모 데이터
 Game 데모 데이터는 가상의 모바일 게임사 시나리오에서 사용되는 게임사의 사용자 정보 예제 데이터임  
